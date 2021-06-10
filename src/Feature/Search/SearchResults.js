@@ -12,9 +12,9 @@ function SearchResults({ searchQuery }) {
 
     return data.search.edges.map(({ node }) => (
         <div key={ node?.id ?? uuidv4() }>
-        <p className="App-paragraph">
-            {node?.name ?? "--"} : {node?.login ?? "--"}
-        </p>
+            <p className="App-paragraph">
+                {node?.name ?? "--"} : {node?.login ?? "--"}
+            </p>
         </div>
     ));
 }
