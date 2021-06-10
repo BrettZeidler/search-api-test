@@ -17,15 +17,16 @@ class SearchBar extends React.Component {
                     value={this.state.value}
                     placeholder={"Search users"}
                     onChange={this.onChange}
+                    onKeyDown={this.props.onKeyDown}
                 />
                 <button onClick={this.props.onClick}>Search</button>
             </div>
         );
     }
 
-    onChange = (e) => {
-        this.setState({searchText: e.target.value});
-        this.props.onChange(e)
+    onChange = (event) => {
+        this.setState({searchText: event.target.value});
+        this.props.onChange(event)
     }
 }
 

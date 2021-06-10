@@ -10,13 +10,22 @@ function SearchResults({ searchQuery }) {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
-    return data.search.edges.map(({ node }) => (
-        <div key={ node?.id ?? uuidv4() }>
-            <p className="App-paragraph">
-                {node?.name ?? "--"} : {node?.login ?? "--"}
-            </p>
+    return (
+        <div>
+            <div>
+                <h3 className="App-paragraph">
+                    Found {data.search.userCount ?? "no"} results for '{searchQuery}'
+                </h3>
+            </div>
+            {data.search.edges.map(({ node }) => (
+                <div key={ node?.id ?? uuidv4() }>
+                    <p className="App-paragraph">
+                        {node?.name ?? "--"} : {node?.login ?? "--"}
+                    </p>
+                </div>
+            ))}
         </div>
-    ));
+    )
 }
 
 export default SearchResults;

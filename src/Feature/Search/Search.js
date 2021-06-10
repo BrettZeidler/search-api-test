@@ -17,18 +17,29 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <SearchBar value={searchTextValue} onChange={this.onChange} onClick={this.onClick}/>
+                <SearchBar 
+                    value={searchTextValue} 
+                    onChange={this.onChange} 
+                    onClick={this.onClick} 
+                    onKeyDown={this.onKeyDown} 
+                />
                 <SearchResults searchQuery={this.state.searchText}/>
             </div>
         );
     }
 
-    onChange = (e) => {
-        searchTextValue = e.target.value
+    onChange = (event) => {
+        searchTextValue = event.target.value
     }
 
     onClick = () => {
         this.setState({searchText: searchTextValue});
+    }
+
+    onKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            this.setState({searchText: searchTextValue});
+        }
     }
 }
 
