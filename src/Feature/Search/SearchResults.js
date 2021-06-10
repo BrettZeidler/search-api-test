@@ -14,7 +14,7 @@ function SearchResults({ searchQuery }) {
         <div>
             <div>
                 <h3 className="App-paragraph">
-                    Found {data.search.userCount ?? "no"} results for '{searchQuery}'
+                    Found {data.search.userCount} result{data.search.userCount == 1 ? '' : 's'} for '{searchQuery}'
                 </h3>
             </div>
             {data.search.edges.map(({ node }) => (
