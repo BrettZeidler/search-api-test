@@ -31,8 +31,8 @@ export const USERS_NEXT_QUERY = gql`
 `;
 
 export const USERS_BEFORE_QUERY = gql`
+    ${USER_FIELDS}
     query($searchQuery:String!, $before:String) {
-        ${USER_FIELDS}
         search(query: $searchQuery, before: $before, type: USER, last: 10) {
             pageInfo {
                 endCursor
