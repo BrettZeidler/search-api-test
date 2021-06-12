@@ -20,6 +20,7 @@ jobs:
         npm install
         npm run-script build
       env:
+        CI: false
         REACT_APP_BEARER_TOKEN: ${{ secrets.REACT_APP_BEARER_TOKEN }}
         
     - name: Deploy
