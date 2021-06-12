@@ -24,6 +24,7 @@ jobs:
         echo "REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }}" >> $GITHUB_ENV
       env:
         CI: false
+        REACT_APP_BEARER_TOKEN: ${{ env.REACT_APP_BEARER_TOKEN }}
         
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
