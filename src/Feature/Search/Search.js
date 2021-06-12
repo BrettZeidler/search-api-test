@@ -3,16 +3,15 @@ import SearchBar from './SearchBar.js';
 import SearchResults from './SearchResults.js';
 
 var searchTextValue = ''
-var afterCursor = null
-var beforeCursor = null
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            paginationCount: 1,
-            searchText: ''
+            searchText: '',
+            afterCursor: null,
+            beforeCursor: null
         };
     }
   
@@ -27,8 +26,8 @@ class Search extends React.Component {
                 />
                 <SearchResults
                     searchQuery={this.state.searchText}
-                    after={afterCursor}
-                    before={beforeCursor}
+                    after={this.state.afterCursor}
+                    before={this.state.beforeCursor}
                     onNextPage={this.onNextPage}
                     onPreviousPage={this.onPreviousPage}
                 />
@@ -51,22 +50,19 @@ class Search extends React.Component {
     }
 
     resetState = () => {
-        afterCursor = null;
-        beforeCursor = null;
-        this.setState({paginationCount: 1});
+        this.setState({afterCursor: null});
+        this.setState({beforeCursor: null});
         this.setState({searchText: searchTextValue});
     }
 
     onNextPage = (nextCursor) => {
-        afterCursor = nextCursor;
-        beforeCursor = null;
-        this.setState({paginationCount: this.state.paginationCount + 1});
+        this.setState({afterCursor: nextCursor});
+        this.setState({beforeCursor: null});
     }
 
     onPreviousPage = (previousCursor) => {
-        afterCursor = null;
-        beforeCursor = previousCursor;
-        this.setState({paginationCount: this.state.paginationCount - 1});
+        this.setState({afterCursor: null});
+        this.setState({beforeCursor: previousCursor});
     }
 }
 

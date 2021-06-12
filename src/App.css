@@ -25,41 +25,41 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  color: #CFD861;
+  color: #EB5F59;
 }
 
 .SearchInput-dark {
-  border-color: #CFD861;
+  border-color: #EB5F59;
   background-color: #2B425A;
   color: white;
 }
 
 .SearchInput-dark:focus {
-  border-color: #CFD861;
+  border-color: #EB5F59;
   background-color: #2B425A;
   color: white;
 }
 
 .SearchButton-dark {
-  border-color: #CFD861;
+  border-color: #EB5F59;
   background-color: #2B425A;
 }
 
 .SearchButton-dark:hover {
-  border-color: #CFD861;
-  background-color: #CFD861;
+  border-color: #EB5F59;
+  background-color: #EB5F59;
   color: #2B425A;
 }
 
 .User-link {
-  color: #CFD861;
+  color: #EB5F59;
   text-decoration: none;
   padding-left: 0px;
   padding-right: 4px;
 }
 
 .User-link:hover {
-  color: #8EAF2D;
+  color: #CFD861;
 }
 
 .User-stats {
@@ -72,8 +72,8 @@
   margin-top: 8px;
   margin-bottom: 8px;
   border-radius: 10px;
-  border-left-color: #CFD861;
-  border-bottom-color: #CFD861;
+  border-left-color: #EB5F59;
+  border-bottom-color: #EB5F59;
   border-width: 2px;
   background-color: #2B425A;
   color: white;
@@ -83,7 +83,7 @@
   padding-left: 0px;
   padding-right: 4px;
   padding-top: 4px;
-  color: #CFD861;
+  color: #EB5F59;
 }
 
 .Pagination-buttons {
@@ -94,12 +94,12 @@
 
 .Pagination-button {
   margin-left: 8px;
-  border-color: #CFD861;
+  border-color: #EB5F59;
   background-color: #2B425A;
 }
 
 .Pagination-button:hover {
-  border-color: #CFD861;
-  background-color: #CFD861;
+  border-color: #EB5F59;
+  background-color: #EB5F59;
   color: #2B425A;
 }
