@@ -19,7 +19,6 @@ jobs:
 
     - name: Build
       run: |
-        echo "REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }}" >> $GITHUB_ENV
         npm install
         REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }} npm run-script build
       env:
