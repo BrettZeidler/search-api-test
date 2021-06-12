@@ -23,7 +23,7 @@ jobs:
         npm install
         REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }} npm run-script build
       env:
-        CI: false
+        CI: true
         
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
