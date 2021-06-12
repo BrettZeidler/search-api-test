@@ -19,12 +19,12 @@ jobs:
 
     - name: Build
       run: |
-        echo "REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }}"
+        echo "REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }}" >> $GITHUB_ENV
         npm install
         npm run-script build
       env:
         CI: false
-        REACT_APP_BEARER_TOKEN: ${{ secrets.REACT_APP_BEARER_TOKEN }}
+        REACT_APP_BEARER_TOKEN: ${{ env.REACT_APP_BEARER_TOKEN }}
         
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.0.0
