@@ -1,6 +1,6 @@
 # A demo of GitHub's Search using their GraphQL v4 API written in React
 
-Live demo on GitHub Pages [here](https://github.com/facebook/create-react-app).
+Live demo on GitHub Pages [here](https://brettzeidler.github.io/search-api-test/).
 
 ## Implemented Features
 
