@@ -19,7 +19,7 @@ function SearchResults({ searchQuery, after, before, onNextPage, onPreviousPage 
     if (error) return <p>{error}</p>;
 
     const edges = data.search.edges
-    const userCount = data.search.userCount
+    const userCount = data.search.userCount ?? 0
     const hasNextPage = data.search.pageInfo?.hasNextPage ?? false
     const hasPreviousPage = data.search.pageInfo?.hasPreviousPage ?? false
     const previousCursor = data.search.pageInfo?.startCursor
@@ -49,7 +49,9 @@ function SearchResults({ searchQuery, after, before, onNextPage, onPreviousPage 
                             {node?.bio}
                         </Row>
                         <Row xs="auto">
-                            <People className="User-stats-icons" size={20}/>{node?.followers?.totalCount ?? 0} · {node?.following?.totalCount ?? 0} following ·<a style={{ padding: '2px' }}></a><Star className="User-stats-icons" size={20}/>{node?.starredRepositories?.totalCount ?? 0}
+                            <People className="User-stats-icons" size={20}/>
+                            {node?.followers?.totalCount ?? 0} · {node?.following?.totalCount ?? 0} following · <a style={{ padding: '2px' }}></a>
+                            <Star className="User-stats-icons" size={20}/>{node?.starredRepositories?.totalCount ?? 0}
                         </Row>
                         <Row xs="auto">
                             <GeoAlt className="User-stats-icons" size={node?.location ? 20 : 0}/>{node?.location}
