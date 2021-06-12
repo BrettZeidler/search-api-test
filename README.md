@@ -12,12 +12,7 @@ Live demo on GitHub Pages [here](https://brettzeidler.github.io/search-api-test/
 
 ## Used Libraries
 
-Main libraries used are:
-
-### `create-react-app`
-
-[create-react-app](https://github.com/facebook/create-react-app)
-
-### `react-bootstrap`
-
-[react-bootstrap](https://github.com/react-bootstrap/react-bootstrap)
+Main libraries used are:\
+[create-react-app](https://github.com/facebook/create-react-app)\
+[react-bootstrap](https://github.com/react-bootstrap/react-bootstrap)\
+[apollo-client](https://github.com/apollographql/apollo-client)
