@@ -25,7 +25,10 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm ci
-      - run: npm run build
+      - name: Build
+        run: npm run build
+        env:
+          CI: false
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -33,5 +36,3 @@ jobs:
         with:
           personal_token: ${{ secrets.REACT_APP_BEARER_TOKEN }}
           publish_dir: ./build
-        env:
-          CI: false
