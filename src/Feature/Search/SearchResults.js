@@ -29,7 +29,11 @@ function SearchResults({ searchQuery, after, before, onNextPage, onPreviousPage 
         <div>
             <div>
                 <h3 className="App-paragraph">
-                    Found {userCount} result{userCount === 1 ? '' : 's'} for '{searchQuery}'
+                    {searchQuery == "" ? 
+                        "Enter a query to search over 70 million users" : 
+                        <>Found {userCount} result{userCount === 1 ? '' : 's'} for '{searchQuery}'</>
+                    }
+                    
                 </h3>
             </div>
             <ListGroup>

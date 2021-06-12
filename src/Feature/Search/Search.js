@@ -20,7 +20,7 @@ class Search extends React.Component {
         return (
             <div>
                 <SearchBar 
-                    value={searchTextValue} 
+                    value={searchTextValue.trim()} 
                     onChange={this.onChange} 
                     onClick={this.onClick} 
                     onKeyDown={this.onKeyDown} 
