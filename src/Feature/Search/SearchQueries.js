@@ -3,10 +3,21 @@ import { gql } from "@apollo/client";
 const USER_FIELDS = gql`
     fragment UserFields on User {
         avatarUrl
-        url
-        name
-        login
+        bio
         id
+        location
+        login
+        name
+        url
+        followers {
+            totalCount
+        }
+        following {
+            totalCount
+        }
+        starredRepositories {
+            totalCount
+        }
     }
 `;
 

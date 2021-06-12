@@ -1,4 +1,11 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
+import { People, Star, GeoAlt, ChevronLeft, ChevronRight } from 'react-bootstrap-icons';
 import { v4 as uuidv4 } from 'uuid';
 import { useQuery } from "@apollo/client";
 import { USERS_NEXT_QUERY, USERS_BEFORE_QUERY } from './SearchQueries.js';
@@ -8,7 +15,7 @@ function SearchResults({ searchQuery, offset, after, before, onNextPage, onPrevi
         variables: { searchQuery, after, before },
     });
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner className="Spinner-custom" animation="border"/>;
     if (error) return <p>{error}</p>;
 
     const edges = data.search.edges
@@ -25,13 +32,29 @@ function SearchResults({ searchQuery, offset, after, before, onNextPage, onPrevi
                     Found {userCount} result{userCount === 1 ? '' : 's'} for '{searchQuery}'
                 </h3>
             </div>
+            <ListGroup>
             {edges.map(({ node }) => (
-                <div key={ node?.id ?? uuidv4() }>
-                    <p className="App-paragraph">
-                        {node?.name ?? "--"} : {node?.login ?? "--"}
-                    </p>
-                </div>
+                <ListGroup.Item key={ node?.id ?? uuidv4() } className="User-Results">
+                    <Row>
+                    <Col xs="auto"><Image width={128} height={128} src={node?.avatarUrl} roundedCircle /></Col>
+                    <Col >
+                        <Row xs="auto">
+                            <a className="User-link" href={node?.url}>{node?.name ?? "--"}</a> · {node?.login ?? "--"}
+                        </Row>
+                        <Row>
+                            {node?.bio}
+                        </Row>
+                        <Row xs="auto">
+                            <People className="User-stats-icons" size={20}/>{node?.followers?.totalCount ?? 0} · {node?.following?.totalCount ?? 0} following ·<a style={{ padding: '2px' }}></a><Star className="User-stats-icons" size={20}/>{node?.starredRepositories?.totalCount ?? 0}
+                        </Row>
+                        <Row xs="auto">
+                            <GeoAlt className="User-stats-icons" size={node?.location ? 20 : 0}/>{node?.location}
+                        </Row>
+                    </Col>
+                    </Row>
+                </ListGroup.Item>
             ))}
+            </ListGroup>
             <NextAndPreviousButtons 
                 hasNextPage={hasNextPage}
                 hasPreviousPage={hasPreviousPage}
@@ -44,10 +67,10 @@ function SearchResults({ searchQuery, offset, after, before, onNextPage, onPrevi
 
 const NextAndPreviousButtons = ({ hasNextPage, hasPreviousPage, onNextPage, onPreviousPage }) => {
     return (
-        <>
-        {hasPreviousPage ? <button onClick={onPreviousPage}>Previous</button> : <></>}
-        {hasNextPage ? <button onClick={onNextPage}>Next</button> : <></>}
-        </>
+        <div className="Pagination-buttons">
+            {hasPreviousPage ? <Button className="Pagination-button" onClick={onPreviousPage}><ChevronLeft></ChevronLeft></Button> : <></>}
+            {hasNextPage ? <Button className="Pagination-button" onClick={onNextPage}><ChevronRight></ChevronRight></Button> : <></>}
+        </div>
     );
 }
 

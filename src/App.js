@@ -2,11 +2,11 @@ import './App.css';
 import Search from './Feature/Search/Search.js';
 
 function App() {
-  return (
-    <div className="App">
-      <Search />
-    </div>
-  );
+  	return (
+    	<div className="App">
+      		<Search />
+    	</div>
+ 	 );
 }
 
 export default App;

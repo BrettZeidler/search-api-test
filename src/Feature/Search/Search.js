@@ -12,8 +12,7 @@ class Search extends React.Component {
 
         this.state = {
             paginationCount: 1,
-            searchText: '',
-            searchResults: []
+            searchText: ''
         };
     }
   
@@ -26,7 +25,7 @@ class Search extends React.Component {
                     onClick={this.onClick} 
                     onKeyDown={this.onKeyDown} 
                 />
-                <SearchResults 
+                <SearchResults
                     searchQuery={this.state.searchText}
                     offset={this.state.paginationCount - 1}
                     after={afterCursor}
