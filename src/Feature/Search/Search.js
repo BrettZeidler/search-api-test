@@ -27,7 +27,6 @@ class Search extends React.Component {
                 />
                 <SearchResults
                     searchQuery={this.state.searchText}
-                    offset={this.state.paginationCount - 1}
                     after={afterCursor}
                     before={beforeCursor}
                     onNextPage={this.onNextPage}

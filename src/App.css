@@ -57,6 +57,10 @@
   padding-right: 4px;
 }
 
+.User-link:hover {
+  color: #8EAF2D;
+}
+
 .User-stats {
   font-size: 20px;
 }
@@ -83,9 +87,12 @@
 
 .Pagination-buttons {
   text-align: right;
+  padding-top: 8px;
+  padding-bottom: 16px;
 }
 
 .Pagination-button {
+  margin-left: 8px;
   border-color: #CFD861;
   background-color: #2B425A;
 }

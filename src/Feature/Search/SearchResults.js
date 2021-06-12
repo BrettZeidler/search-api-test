@@ -5,12 +5,12 @@ import Image from 'react-bootstrap/Image';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
-import { People, Star, GeoAlt, ChevronLeft, ChevronRight } from 'react-bootstrap-icons';
+import { People, Star, GeoAlt, ChevronLeft, ChevronRight, Link } from 'react-bootstrap-icons';
 import { v4 as uuidv4 } from 'uuid';
 import { useQuery } from "@apollo/client";
 import { USERS_NEXT_QUERY, USERS_BEFORE_QUERY } from './SearchQueries.js';
 
-function SearchResults({ searchQuery, offset, after, before, onNextPage, onPreviousPage }) {
+function SearchResults({ searchQuery, after, before, onNextPage, onPreviousPage }) {
     const { loading, error, data } = useQuery(before === null ? USERS_NEXT_QUERY : USERS_BEFORE_QUERY, {
         variables: { searchQuery, after, before },
     });
@@ -50,6 +50,10 @@ function SearchResults({ searchQuery, offset, after, before, onNextPage, onPrevi
                         <Row xs="auto">
                             <GeoAlt className="User-stats-icons" size={node?.location ? 20 : 0}/>{node?.location}
                         </Row>
+                        <Row xs="auto">
+                            <Link className="User-stats-icons" size={node?.websiteUrl ? 20 : 0}/>
+                            <a className="User-link" href={node?.websiteUrl}>{node?.websiteUrl}</a>
+                        </Row>
                     </Col>
                     </Row>
                 </ListGroup.Item>
@@ -68,8 +72,8 @@ function SearchResults({ searchQuery, offset, after, before, onNextPage, onPrevi
 const NextAndPreviousButtons = ({ hasNextPage, hasPreviousPage, onNextPage, onPreviousPage }) => {
     return (
         <div className="Pagination-buttons">
-            {hasPreviousPage ? <Button className="Pagination-button" onClick={onPreviousPage}><ChevronLeft></ChevronLeft></Button> : <></>}
-            {hasNextPage ? <Button className="Pagination-button" onClick={onNextPage}><ChevronRight></ChevronRight></Button> : <></>}
+            {hasPreviousPage ? <Button className="Pagination-button" onClick={onPreviousPage}><ChevronLeft size={24}></ChevronLeft></Button> : <></>}
+            {hasNextPage ? <Button className="Pagination-button" onClick={onNextPage}><ChevronRight size={24}></ChevronRight></Button> : <></>}
         </div>
     );
 }

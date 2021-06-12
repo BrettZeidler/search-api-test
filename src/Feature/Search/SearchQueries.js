@@ -9,6 +9,7 @@ const USER_FIELDS = gql`
         login
         name
         url
+        websiteUrl
         followers {
             totalCount
         }
