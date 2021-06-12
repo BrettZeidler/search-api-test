@@ -6,33 +6,29 @@ on:
       - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-18.04
+  build:
+
+    runs-on: ubuntu-latest
+    
+    environment: github-pages
+    
     steps:
-      - uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+    - name: Checkout
+      uses: actions/checkout@v1
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - run: npm ci
-      - name: Build
-        run: npm run build
-        env:
-          CI: false
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          personal_token: ${{ secrets.REACT_APP_BEARER_TOKEN }}
-          publish_dir: ./build
+    - name: Build
+      run: |
+        touch .env
+        echo "REACT_APP_BEARER_TOKEN=${{ secrets.REACT_APP_BEARER_TOKEN }}" >> .env
+        npm install
+        npm run-script build
+      env:
+        CI: false
+        
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
